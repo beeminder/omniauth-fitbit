@@ -35,6 +35,9 @@ module OmniAuth
       end
 
       info do
+        log(:debug, raw_info['user']['dateOfBirth'].inspect) 
+        log(:debug, raw_info['user']['memberSince'].inspect) 
+        log(:debug, raw_info['user'].inspect) 
         {
             :name         => raw_info['user']['displayName'],
             :full_name    => raw_info['user']['fullName'],
@@ -45,8 +48,8 @@ module OmniAuth
             :city         => raw_info['user']['city'],
             :state        => raw_info['user']['state'],
             :country      => raw_info['user']['country'],
-            :dob          => !raw_info['user']['dateOfBirth'].empty? ? Date.strptime(raw_info['user']['dateOfBirth'], '%Y-%m-%d'):nil,
-            :member_since => Date.strptime(raw_info['user']['memberSince'], '%Y-%m-%d'),
+            #:dob          => !raw_info['user']['dateOfBirth'].empty? ? Date.strptime(raw_info['user']['dateOfBirth'], '%Y-%m-%d'):nil,
+            #:member_since => Date.strptime(raw_info['user']['memberSince'], '%Y-%m-%d'),
             :locale       => raw_info['user']['locale'],
             :timezone     => raw_info['user']['timezone']
         }
